@@ -1,0 +1,15 @@
+# Ignore compiled files
+/bin/
+*.class
+
+# IDE / Build tools
+/.vscode/
+/.idea/
+/target/
+/out/
+
+# OS / Misc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
