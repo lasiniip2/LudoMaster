@@ -39,7 +39,9 @@ public class LudoClient {
                 try {
                     while (true) {
                         Message msg = (Message) finalIn.readObject();
-                        switch (msg.getType()) {
+                        String msgType = msg.getType();
+                        
+                        switch (msgType) {
                             case "INFO":
                                 ui.showMessage(msg.getContent());
                                 break;
@@ -52,6 +54,13 @@ public class LudoClient {
                                 break;
                             case "MOVE":
                                 ui.showMessage(msg.getContent());
+                                break;
+                            case Message.PUBLIC_CHAT:
+                            case Message.PRIVATE_CHAT:
+                                ui.receiveChatMessage(msg);
+                                break;
+                            case Message.USER_LIST:
+                                ui.updateUserList(msg.getUserList());
                                 break;
                         }
                     }

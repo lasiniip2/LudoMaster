@@ -1,83 +1,140 @@
-# LudoMaster
-# 🎲 Ludo Network Game (Java Sockets + Multithreading)
+# LudoMaster - Enhanced Edition
+# 🎲 Ludo Network Game with Integrated Chat (Java Sockets + Multithreading)
 
-A multiplayer **Ludo Game** built using **Java Network Programming concepts**, including:
+A multiplayer **Ludo Game** built using **Java Network Programming concepts**, now featuring a **fully integrated chat system**!
+
+**Key Technologies:**
 - TCP Sockets  
 - Object Streams  
 - Multithreading  
 - Client-Server Communication  
-- Basic Swing GUI for the Board  
+- Modern Swing GUI with Dark Theme
+- Real-time Chat (Group & Private Messaging)
 
-This project was developed for the *Network Programming Assignment* — demonstrating Java NIO, concurrency, and client-server communication.
+This enhanced version combines classic Ludo gameplay with modern chat functionality, demonstrating advanced Java networking, concurrency, and GUI design.
+
+---
+
+## ✨ NEW: Chat Features
+
+- **Group Chat**: Communicate with all players during the game
+- **Private Messaging**: Send private messages to individual players
+- **Modern UI**: WhatsApp-style message bubbles with timestamps
+- **User List**: See all connected players and start conversations
+- **Tabbed Interface**: Switch between group chat and private chats
+- **Real-time Updates**: Messages appear instantly for all recipients
+
+See [CHAT_FEATURES.md](CHAT_FEATURES.md) for detailed chat documentation.
 
 ---
 
 ## 🧱 Project Structure
 
-
-LudoNetworkGame/
+```
+LudoMaster/
 │
 ├── src/
 │   ├── client/
-│   │   ├── LudoClient.java
-│   │   ├── LudoBoardUI.java
+│   │   ├── LudoClient.java          # Client connection handler
+│   │   ├── LudoBoardUI.java         # Main UI with split layout
+│   │   ├── BoardPanel.java          # Enhanced game board graphics
+│   │   └── ChatPanel.java           # ✨ NEW: Chat UI component
 │   │
 │   ├── server/
-│   │   ├── LudoServer.java
-│   │   ├── ClientHandler.java
-│   │   ├── GameManager.java
+│   │   ├── LudoServer.java          # Server initialization
+│   │   ├── ClientHandler.java       # Per-client thread handler
+│   │   └── GameManager.java         # Game logic + chat routing
 │   │
 │   ├── model/
-│   │   ├── Player.java
-│   │   ├── BotPlayer.java
-│   │   ├── GameState.java
-│   │   ├── Message.java
+│   │   ├── Player.java              # Player entity
+│   │   ├── BotPlayer.java           # AI bot player
+│   │   ├── GameState.java           # Game state management
+│   │   └── Message.java             # ✨ ENHANCED: Game + chat messages
 │   │
 │   ├── util/
-│   │   ├── Constants.java
+│   │   └── Constants.java           # Configuration constants
 │   │
-│   └── Main.java
+│   └── Main.java                     # Entry point
 │
-├── bin/                # ← Compiled .class files (ignored by Git)
-├── README.md
+├── bin/                              # Compiled .class files (ignored by Git)
+├── README.md                         # This file
+├── CHAT_FEATURES.md                  # ✨ NEW: Chat documentation
+├── compile-enhanced.bat              # ✨ NEW: Build script
 └── .gitignore
-
-
+```
 
 ---
 
 ## 🧩 Features
 
+### Game Features
 - 🎯 **Multiplayer Support:** 1–4 players (local or across LAN)
 - ⚙️ **Multithreaded Server:** Handles each player on a separate thread  
-- 💬 **Client Communication:** Real-time updates via Object Streams  
+- 💬 **Real-time Updates:** Instant game state synchronization
 - 🧠 **Bot Players:** Automatically added when fewer than 4 players  
-- 🎨 **Simple Swing UI:** Visual board with dice and player updates  
+- � **Turn-based Gameplay:** Classic Ludo rules with dice rolling
 - 🧵 Demonstrates: `Socket`, `ServerSocket`, `Thread`, `ObjectInputStream`, `ObjectOutputStream`
+
+### Chat Features ✨ NEW
+- 💬 **Group Chat:** Broadcast messages to all players
+- 🔒 **Private Messaging:** One-on-one conversations with any player
+- 👥 **User List:** See all connected players
+- 📱 **Modern UI:** WhatsApp-style message bubbles
+- ⏰ **Timestamps:** See when each message was sent
+- 🎨 **Tabbed Interface:** Separate tabs for each conversation
+
+### UI Enhancements ✨ NEW
+- 🎨 **Modern Dark Theme:** Beautiful blue accents on dark background
+- 🎯 **Enhanced Board Graphics:** Colorful tokens, shadows, and effects
+- 📐 **Split Screen Layout:** Game board + chat side-by-side
+- ✨ **Smooth Animations:** Hover effects and transitions
+- 📱 **Responsive Design:** Resizable panels and adaptive layout
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone/Download the repository
 
 ```bash
-clone the repo 
-cd LudoMaster (root folder)
+# Clone or download the project
+cd LudoMaster
+```
 
-2️⃣ Compile the project
+### 2️⃣ Compile the project
 
-From your project root (where /src exists):
+**Option A - Using the batch file (Windows):**
+```cmd
+compile-enhanced.bat
+```
 
-javac -d bin (Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName })
+**Option B - Manual compilation:**
+```bash
+javac -d bin -sourcepath src src\Main.java src\client\*.java src\model\*.java src\server\*.java src\util\*.java
+```
 
---------------------------------------------------------------------
-3️⃣ Run the server
+### 3️⃣ Run the application
 
-In one terminal:
+**Option A - Using Main.java (Recommended):**
+```bash
+cd bin
+java Main
+# Choose option 1 for Server or option 2 for Client
+```
 
+**Option B - Direct server/client launch:**
+
+*Server:*
+```bash
 cd bin
 java server.LudoServer
+```
+
+*Client (in separate terminal):*
+```bash
+cd bin
+java client.LudoClient
+```
 
 You’ll see:
 
