@@ -2,10 +2,8 @@
 title Ludo Master - Client
 color 0A
 echo.
-echo ========================================
 echo   LUDO MASTER - Enhanced with Chat
 echo   CLIENT
-echo ========================================
 echo.
 echo Connecting to server...
 echo.
